@@ -1,0 +1,73 @@
+@import '../../styles/_variables';
+
+body {overflow-x: hidden;}
+
+.banner {
+  position: relative;
+  // left: 50%;
+  // right: 50%;
+  // margin-left: -50vw;
+  // margin-right: -50vw;
+  width: 100vw;
+  overflow: hidden;
+  .left-arrow, .right-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit:cover;
+      }
+  }
+  .left-arrow {
+    left: 20px;
+  }
+
+  .banner-swiper {
+    width: 100%;
+    //min-width: calc(125vw + 30px);
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .slide-center {
+    width: 45vw;
+    //width: 700px;
+  }
+
+  .slide-side {
+    width: 40vw;
+   // width: 600px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 8px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+}

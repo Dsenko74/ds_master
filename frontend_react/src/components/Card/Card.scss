@@ -1,0 +1,108 @@
+@import '../../styles/_variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 8px 8px 16px hsla(236, 6%, 49%, .15);
+  overflow: hidden;
+  width: 100%;
+  max-width: 371px;
+  height: 100%;
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 333 / 220;
+  }
+  &__content {
+    padding: 24px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__title {
+    font-size: 16px;
+    color: $titleColor;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  &__weight {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $textColor;
+  }
+  &__descr {
+    color: $descrColor;
+    font-size: 14px;
+    padding: 14px 0;
+    flex: 1
+  }
+  &__price {
+    font-style: 18px;
+    color: $red;
+    font-weight: 700;
+  }
+  &__oldprice {
+    font-style: 18px;
+    color: $titleColor;
+    font-weight: 700;
+    text-decoration: line-through;
+  }
+  &__params {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+    &:not(:last-child) {margin-bottom: 16px;}
+  }
+  &__cashback{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 5px;
+    font-style: 16px;
+    color: $titleColor;
+    font-weight: 700;
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  &__oldprice {
+    font-style: 18px;
+    color: $titleColor;
+    font-weight: 700;
+    text-decoration: line-through;
+  }
+  &__novelty {
+    position: absolute;
+    top: 10px;  
+    right: 10px;
+    color: #071f77;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: $yellow;    
+    border: none
+  }
+  &__footer {
+    width: 100%;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+ 
+
+}

@@ -1,0 +1,30 @@
+export default {
+  name: 'dsmaster',
+  title: 'DS MASTER',
+  type: 'document',
+  fields: [
+    { name: 'categories', title: 'Категорії', type: 'string' },
+    { name: 'title', title: 'Назва', type: 'string' },
+    { name: 'price', title: 'Ціна', type: 'number' },
+    { name: 'oldPrice', title: 'Стара ціна', type: 'number' },
+    { name: 'weight', title: 'Вага', type: 'number' },
+    { name: 'cashback', title: 'Кешбек', type: 'number' },
+    { name: 'novelty', title: 'Новинка', type: 'boolean' },
+     { name: 'gift', title: 'Подарунок', type: 'boolean' },
+    { name: 'action', title: 'Акція', type: 'boolean' },
+    { name: 'discount', title: 'Знижка (%)', type: 'number' },
+    {
+      name: 'image',
+      title: 'Зображення',
+      type: 'image',
+      options: { hotspot: true },
+    },
+    { name: 'description', title: 'Опис', type: 'text' },
+    {
+      name: 'ingredients',
+      title: 'Інгредієнти',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+  ],
+}

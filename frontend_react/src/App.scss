@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap");
+@import '../src/styles/variables';
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Montserrat';
+  box-sizing: border-box;
+
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  // max-width: 1592px;
+  // margin: 36px auto;
+  min-height: 100vh;
+  padding: 0 30px;
+}
+.container {
+  width: 100%;
+  max-width: 1592px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 30px 0px;
+    text-transform: capitalize;
+  }
+  .cart {
+    justify-self: end;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    &__img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    span {
+      position: absolute;
+      right: -8px;
+      top: 0;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      background: #e30613;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //border: none;
+    }
+  }
+
+.right-arrow,
+.left-arrow {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FF2625;
+  font-size: 25px;
+  border-radius: 4px;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  box-shadow: -1px 1px 16px hsla(0, 0%, 55%, .15);
+  //transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+  z-index: 3;
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit:cover;
+  }
+}
+
+.right-arrow {
+  right: 75px;
+}
+
+// .right-arrow:hover,
+// .left-arrow:hover {
+
+// }
+
+// .react-horizontal-scrolling-menu--scroll-container {
+//   overflow-x: hidden;
+// }
