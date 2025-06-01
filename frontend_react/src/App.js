@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import { Navbar, Footer } from './components';
 import Order from './pages/Order';
+import Cart from './pages/Cart';
 import { client } from './sanityClient';
 
 
@@ -14,8 +15,8 @@ const  App =  () => {
   const [prod, setProd] = useState('All');
   const [sets, setSets] = useState([]);
   const [orders, setOrders] = useState([]);
-  console.log(prod)
-  console.log(sets)
+
+ // console.log(sets)
     useEffect(() => {
       const fetchData = async () => {
         const data = await client.fetch(`*[_type == "dsmaster"]{
@@ -49,6 +50,7 @@ const  App =  () => {
         <Route path="/" element={<Home sets={sets} prod={prod} setOrders={setOrders} orders={orders} />} />
         <Route path="/category/:sets" element={<Home sets={sets} prod={prod} setOrders={setOrders} orders={orders}/>} />
         <Route path="/order/:id" element={<Order prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} />
+        {/* <Route path="/cart" element={<Cart prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} /> */}
       </Routes>
       <Footer />
     </div>

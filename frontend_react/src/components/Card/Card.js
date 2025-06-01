@@ -22,17 +22,19 @@ const Card = ({item, setOrders, orders}) => {
       <div className="card__content">
         <div className="card__params">
           <p className='card__weight'>{`${weight} гр`} </p>
-          <div className="card__cashback">
-            <img src={Cashback} alt="cashback" />
-            <p className='card__cashback-text'>
-              <span>Кешбек від</span> {cashback} %</p>
-          </div>
+          { cashback && (
+            <div className="card__cashback">
+              <img src={Cashback} alt="cashback" />
+              <p className='card__cashback-text'>
+                <span>Кешбек від</span> {cashback} %</p>
+            </div>
+          )}
         </div>
         <Link to={`/order/${_id}`} className='card__title'>
           {title}
         </Link>
         <p className='card__descr'>
-          {description.length > 80 ? `${description.slice(0, 80)}...` : description}
+          {description?.length > 80 ? `${description.slice(0, 80)}...` : description}
         </p>
         <div className="card__footer">
           {price ? <p className='card__price'>{`${price} грн`}</p>: null}

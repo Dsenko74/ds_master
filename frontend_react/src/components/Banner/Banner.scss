@@ -37,12 +37,14 @@ body {overflow-x: hidden;}
   }
 
   .slide-center {
-    width: 45vw;
+    width: 50vw;
+    //transition: transform 0.5s ease, width 0.5s ease;
     //width: 700px;
   }
 
   .slide-side {
     width: 40vw;
+   //  transition: transform 0.5s ease, width 0.5s ease;
    // width: 600px;
   }
 

@@ -36,7 +36,7 @@ const HorizontalScrollbar = ({ productId, sets, setOrders, orders, prod}) => {
     'новинки': () => sets.filter(item => item.novelty === true),
   };
 
-    const visibleItems = filters[prod]?.() || sets.filter(item => item.categories === prod);
+    const visibleItems = filters[prod]?.() || sets.filter(item => item.categories.toLowerCase() === prod.toLowerCase());
 
 
   return (

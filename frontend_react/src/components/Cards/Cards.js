@@ -9,14 +9,18 @@ const Cards = ({ sets, setOrders, orders, prod }) => {
     'акціі': () => sets.filter(item => item.action === true),
     'новинки': () => sets.filter(item => item.novelty === true),
   };
-
-  const visibleItems = filters[prod]?.() || sets.filter(item => item.categories === prod);
+  console.log(prod);
+  const visibleItems =
+  filters[prod]?.() ||
+  sets.filter(item => item.categories?.toLowerCase() === prod.toLowerCase());
+  //const visibleItems = filters[prod]?.() || sets.filter(item => item.categories === prod);
   console.log(visibleItems)
+ 
 
   return (
       <div className="cards__items">
         {visibleItems.map(item => (
-        <Card key={item._id} item={item} setOrders={setOrders} orders={orders}/>
+          <Card key={item._id} item={item} setOrders={setOrders} orders={orders}/>
         ))}
       </div>
   );
