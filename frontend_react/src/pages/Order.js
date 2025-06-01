@@ -9,10 +9,10 @@ const Order = ({sets, setOrders, orders, prod}) => {
   const {id} = useParams();
 
   return (
-    <>
+    <div className='container'>
       <OrderCard sets={sets} id={id} setOrders={setOrders} orders={orders} prod={prod}/>
       <Recommendations />
-    </>
+    </div>
   )
 }
 

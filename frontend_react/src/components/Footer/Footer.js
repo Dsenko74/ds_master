@@ -9,9 +9,11 @@ import './Footer.scss';
 const Footer = () => {
   return (
     <div className='footer'>
-      <FooterNavigation />
-      <FooterSocial />
-      <FooterCopyright />
+      <div className="container">
+        <FooterNavigation />
+        <FooterSocial />
+        <FooterCopyright />
+      </div>
     </div>
   )
 }

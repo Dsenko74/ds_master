@@ -14,11 +14,11 @@ const Cards = ({ sets, setOrders, orders, prod }) => {
   console.log(visibleItems)
 
   return (
-    <div className="cards__items">
-      {visibleItems.map(item => (
+      <div className="cards__items">
+        {visibleItems.map(item => (
         <Card key={item._id} item={item} setOrders={setOrders} orders={orders}/>
-      ))}
-    </div>
+        ))}
+      </div>
   );
 };
 
