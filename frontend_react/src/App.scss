@@ -20,8 +20,9 @@
   padding: 30px 0;
 }
 .container {
-  width: 100%;
-  max-width: 1592px;
+  width: 1592px;
+  // width: 100%;
+  // max-width: 1592px;
   margin: 0 auto;
   padding: 0 30px;
 }
@@ -38,35 +39,6 @@
     font-weight: 700;
     margin: 30px 0px;
     text-transform: capitalize;
-  }
-  .cart {
-    justify-self: end;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    &__img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-    span {
-      position: absolute;
-      right: -8px;
-      top: 0;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      background: #e30613;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      //border: none;
-    }
   }
 
 .right-arrow,

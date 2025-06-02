@@ -15,8 +15,6 @@ const  App =  () => {
   const [prod, setProd] = useState('All');
   const [sets, setSets] = useState([]);
   const [orders, setOrders] = useState([]);
-
- // console.log(sets)
     useEffect(() => {
       const fetchData = async () => {
         const data = await client.fetch(`*[_type == "dsmaster"]{
@@ -40,9 +38,6 @@ const  App =  () => {
       fetchData()
     }, [])
 
-
-
-
   return (
     <div className='App'>
       <Navbar setProd={setProd} orders={orders}/>
@@ -50,7 +45,7 @@ const  App =  () => {
         <Route path="/" element={<Home sets={sets} prod={prod} setOrders={setOrders} orders={orders} />} />
         <Route path="/category/:sets" element={<Home sets={sets} prod={prod} setOrders={setOrders} orders={orders}/>} />
         <Route path="/order/:id" element={<Order prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} />
-        {/* <Route path="/cart" element={<Cart prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} /> */}
+        <Route path="/cart" element={<Cart prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} />
       </Routes>
       <Footer />
     </div>

@@ -1,0 +1,11 @@
+//@import '../src/styles/variables';
+
+.cart {
+  flex-grow: 1;
+  &-body {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 1.8fr 1fr;
+
+  }
+}

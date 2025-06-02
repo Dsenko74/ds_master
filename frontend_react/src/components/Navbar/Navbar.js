@@ -36,9 +36,12 @@ return (
           >
           <img src={Logo} alt='logo' className='navbar__img'/>
         </NavLink>
-        <Link className='cart'>
-          <img src={Cart} alt='cart' className='cart__img'/>
-          {sum ? <span>{sum}</span> : null}
+        <Link 
+          to='/cart'
+          className='navbar__cart'
+          >
+            <img src={Cart} alt='cart' className='cart__img'/>
+            {sum ? <span>{sum}</span> : null}
           
         </Link>
       </div>
