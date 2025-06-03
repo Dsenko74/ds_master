@@ -9,6 +9,7 @@
 
 }
 .App {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,12 +18,12 @@
   // max-width: 1592px;
   // margin: 36px auto;
   min-height: 100vh;
-  padding: 30px 0;
+  padding: 120px 0 30px 0;
 }
 .container {
-  width: 1592px;
-  // width: 100%;
-  // max-width: 1592px;
+  //width: 1592px;
+  width: 100%;
+  max-width: 1592px;
   margin: 0 auto;
   padding: 0 30px;
 }

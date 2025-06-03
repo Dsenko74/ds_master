@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteMark from  '../../assets/icon/icons8-cross-mark-78.png';
 import AddToCardButton from '../AddToCardButton/AddToCardButton';
 
 import './CartItem.scss';
 
 const CartItem = ({item, setOrders, orders}) => {
     const { _id, title, price, discount, description, ingredients, imageUrl, oldPrice, novelty, action, cashback, weight } = item;
-    console.log(orders)
+    
+    // тут дістаємо кількість товару
+    const quantity = orders.find(item => item.id === _id)?.quantity || 0;
+    
+    //видаляємо товар по _id з корзини замовлень (orders)
     const deleteOrderById = (idToDelete) => {
       setOrders(prevOrders => prevOrders.filter(order => order.id !== idToDelete));
     };
+
+    console.log(`orders`, quantity)
 
   return (
     <div className='cart-item'>
@@ -27,17 +34,19 @@ const CartItem = ({item, setOrders, orders}) => {
       </div>
       <AddToCardButton productId={_id} setOrders={setOrders} orders={orders}/>
       <div className="cart-item__prices">
-        { price ? <p className='cart-item__prices-price'>{`${price} грн`}</p> : null}
+        { price ? <p className='cart-item__prices-price'>{`${price*quantity}грн`}</p> : null}
         <span 
           className={
             price ? 'cart-item__prices-old' : 'cart-item__prices-old cart-item__prices-old_new'}
             >
-            {`${oldPrice} грн`}</span>
+            {`${oldPrice*quantity} грн`}</span>
       </div>
       <button 
         className="cart-item__delete"
         onClick={() => deleteOrderById(_id)}
-        ></button>
+        >
+          <img src={DeleteMark} alt="DeleteMark" />
+        </button>
     </div>
   )
 }

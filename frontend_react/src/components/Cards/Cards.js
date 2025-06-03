@@ -9,12 +9,10 @@ const Cards = ({ sets, setOrders, orders, prod }) => {
     'акціі': () => sets.filter(item => item.action === true),
     'новинки': () => sets.filter(item => item.novelty === true),
   };
-  console.log(prod);
+
   const visibleItems =
   filters[prod]?.() ||
   sets.filter(item => item.categories?.toLowerCase() === prod.toLowerCase());
-  //const visibleItems = filters[prod]?.() || sets.filter(item => item.categories === prod);
-  console.log(visibleItems)
  
 
   return (

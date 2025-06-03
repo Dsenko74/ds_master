@@ -1,11 +1,33 @@
-//@import '../src/styles/variables';
+@import '../../src/styles/variables';
 
 .cart {
+  width: 100%;
   flex-grow: 1;
   &-body {
     display: grid;
     align-items: stretch;
     grid-template-columns: 1.8fr 1fr;
-
+  }
+  &-main {
+    &__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &:not(:last-child) {
+        margin-bottom: 36px;}
+      &-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: $titleColor;
+      }
+      &-btn {
+        color: $red;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        text-transform: uppercase;
+        background: #fff;
+      }
+    }
   }
 }
