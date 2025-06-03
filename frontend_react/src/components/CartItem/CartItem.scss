@@ -63,4 +63,15 @@
       }
     }
   }
+  &__delete {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #dbdbdb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    
+  }
 }

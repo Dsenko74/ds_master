@@ -12,9 +12,9 @@ import './App.scss';
 
 
 const  App =  () => {
-  const [prod, setProd] = useState('All');
-  const [sets, setSets] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [prod, setProd] = useState('All'); // вибір категорії
+  const [sets, setSets] = useState([]); //база всіх продуктів
+  const [orders, setOrders] = useState([]);//стейт з заказами
     useEffect(() => {
       const fetchData = async () => {
         const data = await client.fetch(`*[_type == "dsmaster"]{

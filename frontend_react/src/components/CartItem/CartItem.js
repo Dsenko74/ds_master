@@ -6,6 +6,11 @@ import './CartItem.scss';
 
 const CartItem = ({item, setOrders, orders}) => {
     const { _id, title, price, discount, description, ingredients, imageUrl, oldPrice, novelty, action, cashback, weight } = item;
+    console.log(orders)
+    const deleteOrderById = (idToDelete) => {
+      setOrders(prevOrders => prevOrders.filter(order => order.id !== idToDelete));
+    };
+
   return (
     <div className='cart-item'>
       <div className="cart-item__image">
@@ -29,7 +34,10 @@ const CartItem = ({item, setOrders, orders}) => {
             >
             {`${oldPrice} грн`}</span>
       </div>
-      <button className="cart-item__delete"></button>
+      <button 
+        className="cart-item__delete"
+        onClick={() => deleteOrderById(_id)}
+        ></button>
     </div>
   )
 }

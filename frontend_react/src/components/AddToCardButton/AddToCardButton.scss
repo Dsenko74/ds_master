@@ -6,10 +6,11 @@
   height: 48px;
   border-radius: 8px;
   font-size: 14px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 700;
   border: none;
   color: white;
+  white-space: nowrap;
   &-active {
     background-color: $pink;
     color: $red;
@@ -28,19 +29,25 @@
   div {
     border-radius: 8px;
     border: 1px solid $red;
-
     width: 150px;
     height: 48px;
     padding: 10px 16px;
-   
-
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 5px;
     position: relative;
     z-index: 3;
-
   }
-
+}
+.cart {
+  .btn {
+    background: transparent;
+    //margin: 0 30px;
+    div {
+      border: 1px solid #e7e7e7;
+      color: $textColor;
+      width: 108px;
+    }
   }
+}

@@ -10,7 +10,7 @@ const Cart = ({sets, setOrders, orders, prod}) => {
   const filteredSets = sets.filter(set =>
     orders.some(order => order.id === set._id)
   );
-  console.log(filteredSets)
+  
   return (
     <div className='cart'>
       <div className="container">
