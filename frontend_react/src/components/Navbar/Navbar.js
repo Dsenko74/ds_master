@@ -6,18 +6,23 @@ import Logo from '../../assets/icon/Logo.png';
 import Cart from '../../assets/icon/cart.png';
 
 
-const Navbar = ({setProd, orders}) => {
+const Navbar = ({setProd, orders, requiredIds}) => {
 
   const menuItems = [
     'Сети', 'Роли', 'Акціі', 'Комбо', 'Новинки', 'Суші бургери',
     'Суші', 'Гаряче та салати', 'Десерти та напої',
     'Доповнення', 'Філадельфії', 'Каліфорніі'
   ];
-let sum = 0;
-if (Array.isArray(orders) && orders.length > 0) {
-  orders.forEach(item => {
-    sum += item.quantity;
-  })};
+//це функція виводить суму замовлених товарів, без врахування обов'язкових
+const totalCount = orders
+  .filter(item => !requiredIds.includes(item.id))
+  .reduce((sum, item) => sum + item.quantity, 0);
+  console.log(`sum`, totalCount)
+//let sum = 0;
+// if (Array.isArray(orders) && orders.length > 0) {
+//   orders.forEach(item => {
+//     sum += item.quantity;
+//   })};
 
 
 return (
@@ -41,7 +46,7 @@ return (
           className='navbar__cart'
           >
             <img src={Cart} alt='cart' className='cart__img'/>
-            {sum ? <span>{sum}</span> : null}
+            {totalCount ? <span>{totalCount}</span> : null}
           
         </Link>
       </div>

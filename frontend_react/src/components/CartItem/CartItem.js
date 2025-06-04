@@ -16,7 +16,7 @@ const CartItem = ({item, setOrders, orders}) => {
       setOrders(prevOrders => prevOrders.filter(order => order.id !== idToDelete));
     };
 
-    console.log(`orders`, quantity)
+  
 
   return (
     <div className='cart-item'>
