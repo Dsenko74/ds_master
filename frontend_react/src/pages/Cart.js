@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CartItem from '../components/CartItem/CartItem';
+import CartEmpty from '../components/CartEmpty/CartEmpty';
 import './Cart.scss';
 
-const Cart = ({sets, setOrders, orders, prod}) => {
+const Cart = ({sets, setOrders, orders, prod, requiredIds}) => {
   // цей стайт створений щоб до замовлення додати супутні продукти, окремий стейт
   const [filteredSets, setFilteredSets] = useState([]);
 
@@ -13,7 +14,11 @@ const Cart = ({sets, setOrders, orders, prod}) => {
     setFilteredSets(result);
   }, [orders]);
 
-
+//це функція виводить суму замовлених товарів, без врахування обов'язкових
+const totalCount = orders
+  .filter(item => !requiredIds.includes(item.id))
+  .reduce((sum, item) => sum + item.quantity, 0);
+  console.log(`sum`, totalCount)
 
 
   //функція для онулення кошика
@@ -22,6 +27,7 @@ const Cart = ({sets, setOrders, orders, prod}) => {
    // setFilteredSets([]); // обнуляємо також і filteredSets
   };
   return (
+   totalCount ? ( 
     <div className='cart'>
       <div className="container">
         <div className="cart-body">
@@ -35,7 +41,6 @@ const Cart = ({sets, setOrders, orders, prod}) => {
                   очистити кошик
               </button>
             </div>
-          {/* передаю в orders={fullOrder} який не зв'язаний з orders, тому є баг, треба два раза клікнути*/}
           {filteredSets.map(item => (
             <CartItem item={item} setOrders={setOrders} orders={orders}/>
           ))}
@@ -44,7 +49,7 @@ const Cart = ({sets, setOrders, orders, prod}) => {
         </div>
         <div className="cart-add"></div>
       </div>
-    </div>
+    </div>) : <CartEmpty/> 
   )
 }
 

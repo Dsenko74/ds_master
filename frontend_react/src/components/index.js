@@ -7,6 +7,7 @@ import Offers from "./Offers/Offers";
 import AddToCardButton from "./AddToCardButton/AddToCardButton";
 
 
+
 export {
   Navbar,
   Footer,

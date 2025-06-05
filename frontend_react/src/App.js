@@ -12,7 +12,7 @@ import './App.scss';
 const  App =  () => {
   const [prod, setProd] = useState('All'); // вибір категорії
   const [sets, setSets] = useState([]); //база всіх продуктів
-  const [orders, setOrders] = useState([]);//стейт з заказами  
+  const [orders, setOrders] = useState([]);//стейт з заказами 
   // сукупні продукти
   const requiredProducts = [
     { id: "40888917-599d-4392-b63e-d63ea36cfa3d", quantity: 1 },
@@ -46,7 +46,7 @@ const  App =  () => {
         setSets(data)
     };
 
-    fetchData()
+    fetchData();
   }, [])
 
   const requiredIds = requiredProducts.map(p => p.id);

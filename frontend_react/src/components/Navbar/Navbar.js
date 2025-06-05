@@ -18,12 +18,6 @@ const totalCount = orders
   .filter(item => !requiredIds.includes(item.id))
   .reduce((sum, item) => sum + item.quantity, 0);
   console.log(`sum`, totalCount)
-//let sum = 0;
-// if (Array.isArray(orders) && orders.length > 0) {
-//   orders.forEach(item => {
-//     sum += item.quantity;
-//   })};
-
 
 return (
   <div className='navbar'>
@@ -32,8 +26,8 @@ return (
         <div className="navbar__header-location">
           <p className='navbar__header-text'>Київ</p>
         </div>
-        <NavLink 
-          to='/' 
+        <NavLink
+          to='/'
           className='navbar__logo'
           onClick={() => {
             setProd('All');
@@ -41,13 +35,15 @@ return (
           >
           <img src={Logo} alt='logo' className='navbar__img'/>
         </NavLink>
-        <Link 
+        <Link
           to='/cart'
+          onClick={(e) => {
+            if (totalCount === 0) e.preventDefault();
+          }}
           className='navbar__cart'
           >
             <img src={Cart} alt='cart' className='cart__img'/>
             {totalCount ? <span>{totalCount}</span> : null}
-          
         </Link>
       </div>
 
