@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CartEmptyIcon from '../../assets/icon/cart-empty.svg';
+
 import './CartEmpty.scss';
-import CartEmptyIcon from '../../assets/icon/cart-empty.svg'
 
 const CartEmpty = () => {
   return (
@@ -14,7 +15,7 @@ const CartEmpty = () => {
       </p>
       <Link
         to='/'
-        className='cart-empty__btn'
+        className='cart-empty__btn' 
       >
         В меню
       </Link>
@@ -23,4 +24,4 @@ const CartEmpty = () => {
   )
 }
 
-export default CartEmpty
+export default CartEmpty;

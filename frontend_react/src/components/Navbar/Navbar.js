@@ -17,7 +17,6 @@ const Navbar = ({setProd, orders, requiredIds}) => {
 const totalCount = orders
   .filter(item => !requiredIds.includes(item.id))
   .reduce((sum, item) => sum + item.quantity, 0);
-  console.log(`sum`, totalCount)
 
 return (
   <div className='navbar'>

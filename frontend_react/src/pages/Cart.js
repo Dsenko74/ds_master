@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import CartItem from '../components/CartItem/CartItem';
 import CartEmpty from '../components/CartEmpty/CartEmpty';
+import HalfEmptyCart from '../assets/icon/halfEmpty-cart-96.png';
+import ArrowPromo from '../assets/icon/arrow-right-promo.svg';
 import './Cart.scss';
 
+
+// цей компонент необхідно розбити ще на декілька компонентів
 const Cart = ({sets, setOrders, orders, prod, requiredIds}) => {
   // цей стайт створений щоб до замовлення додати супутні продукти, окремий стейт
   const [filteredSets, setFilteredSets] = useState([]);
-
+  const [inputValue, setInputValue] = useState("");
   useEffect(() => {
     const result = sets.filter(set =>
       orders.some(order => order.id === set._id)
@@ -14,18 +18,26 @@ const Cart = ({sets, setOrders, orders, prod, requiredIds}) => {
     setFilteredSets(result);
   }, [orders]);
 
-//це функція виводить суму замовлених товарів, без врахування обов'язкових
+//це функція виводить кількість замовлених товарів, без врахування обов'язкових
 const totalCount = orders
   .filter(item => !requiredIds.includes(item.id))
   .reduce((sum, item) => sum + item.quantity, 0);
-  console.log(`sum`, totalCount)
-
-
+// це функція підраховує загальну суму замовлення
+const totalAmount = filteredSets.reduce((sum, item) => {
+  const order = orders.find(o => o.id === item._id);
+  const quantity = order ? order.quantity : 0;
+  return sum + ( item.price ? item.price : item.oldPrice) * quantity;
+}, 0);
   //функція для онулення кошика
   const clearCart = () => {
     setOrders([]);
-   // setFilteredSets([]); // обнуляємо також і filteredSets
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Обробка введених даних
+    console.log("Дані форми:", inputValue);
+  };
+  
   return (
    totalCount ? ( 
     <div className='cart'>
@@ -45,11 +57,43 @@ const totalCount = orders
             <CartItem item={item} setOrders={setOrders} orders={orders}/>
           ))}
           </div>
-          <div className="cart-order"></div>
+          <div className="cart-order">
+            <div className="cart-order__body">
+    {totalAmount < 700 ? <div className="cart-order__head">
+                          <div className="cart-order__head-icon">
+                            <img src={HalfEmptyCart} alt="icon" />
+                          </div>
+                          <p className="cart-order__head-txt">`Щоб оформити безкоштовну доставку додайте товарів на {700 - totalAmount} грн`</p>
+                        </div> : null}
+              <form className="cart-order__form" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="orderNote"
+                  placeholder="Є промокод?"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button type="submit">
+                  <img src={ArrowPromo} alt="ArrowPromo" />
+                </button>
+              </form>
+              <div className="cart-order__amount">
+                <p className="cart-order__amout-type">Товари</p>
+                <p className="cart-order__amout-value">{`${totalAmount} грн`}</p>
+              </div>
+{ totalAmount < 700 ?  <div className="cart-order__amount">
+                <p className="cart-order__amout-type">Доставка</p>
+                <p className="cart-order__amout-value">80 грн</p>
+              </div>: null}
+              <span className='cart-order__total'>{`${totalAmount} грн`}</span>
+              <button className='cart-order__btn'>{`Оформити ${totalAmount} грн`}</button>
+            </div>
+           
+          </div>
         </div>
         <div className="cart-add"></div>
       </div>
-    </div>) : <CartEmpty/> 
+    </div>) : <CartEmpty clearCart={clearCart}/> 
   )
 }
 

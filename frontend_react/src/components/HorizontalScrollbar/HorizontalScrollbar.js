@@ -27,9 +27,11 @@ const RightArrow = () => {
 };
 
 const HorizontalScrollbar = ({ productId, sets, setOrders, orders, prod}) => {
-  // потрібно переробити логіку виводу рекомендацій
+  // потрібно переробити логіку виводу рекомендацій s винести в кастомний хук
   //можливо використовувати щось біль сучасніше ніж ScrollMenu
   // ScrollMenu не підтримує gap
+
+  //visibleItems це отфільтровані продукти, якщо All або акціі абоновинки, якщо ні то фільтрує по prod
     const filters = {
     'All': () => sets.slice(0, 8),
     'акціі': () => sets.filter(item => item.action === true),

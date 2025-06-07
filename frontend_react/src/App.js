@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import { Navbar, Footer } from './components';
 import Order from './pages/Order';
@@ -13,6 +13,30 @@ const  App =  () => {
   const [prod, setProd] = useState('All'); // вибір категорії
   const [sets, setSets] = useState([]); //база всіх продуктів
   const [orders, setOrders] = useState([]);//стейт з заказами 
+  const location = useLocation();
+
+  useEffect(() => {
+  const fetchData = async () => {
+    const data = await client.fetch(`*[_type == "dsmaster"]{
+      _id,
+      title,
+      price,
+      discount,
+      description,
+      ingredients,
+      "imageUrl": image.asset->url,
+      oldPrice,
+      weight,
+      cashback,
+      novelty,
+      action,
+      categories,
+    }`)
+      setSets(data)
+  };
+
+    fetchData();
+  }, [])
   // сукупні продукти
   const requiredProducts = [
     { id: "40888917-599d-4392-b63e-d63ea36cfa3d", quantity: 1 },
@@ -20,49 +44,22 @@ const  App =  () => {
     { id: "3f940b48-f89b-4259-8da4-bb5911ff3750", quantity: 1 },
     { id: "37a41aa4-ebfd-4de8-b21a-d08239558e14", quantity: 1 },
   ];
+  
   useEffect(() => {
     if (orders.length === 0) {
       setOrders(requiredProducts);
     }
   }, [orders]);
-
+  // скидаємо prod до All коли корзина очищується
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await client.fetch(`*[_type == "dsmaster"]{
-        _id,
-        title,
-        price,
-        discount,
-        description,
-        ingredients,
-        "imageUrl": image.asset->url,
-        oldPrice,
-        weight,
-        cashback,
-        novelty,
-        action,
-        categories,
-      }`)
-        setSets(data)
-    };
+  if (location.pathname === '/') {
+    setProd('All'); // скидає категорію при переході на головну
+  }
+  }, [location.pathname]);
 
-    fetchData();
-  }, [])
+
 
   const requiredIds = requiredProducts.map(p => p.id);
-
-  // useEffect(() => {
-  //   // Якщо всі товари в orders — це лише обов’язкові
-  //   const onlyRequiredLeft = orders.every(order => requiredIds.includes(order.id));
-
-  //   // Якщо немає жодного не-обов'язкового товару → чистимо
-  //   if (orders.length > 0 && onlyRequiredLeft) {
-  //     setOrders([]); 
-  //     console.log(`4`, orders)// очищаємо весь кошик
-  //   }
-  // }, [orders]);
-
-
 
   return (
     <div className='App'>
