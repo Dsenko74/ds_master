@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import HorizontalScrollbar from '../HorizontalScrollbar/HorizontalScrollbar';
+import Card from '../../components/Card/Card';
+import Bonus from '../../assets/icon/bonus.svg';
+import Cashback from '../../assets/icon/keshbek-vid.svg';
+
 
 import './OrderCard.scss';
-import Bonus from '../../assets/icon/bonus.svg';
-import Cashback from '../../assets/icon/keshbek-vid.svg'
-import HorizontalScrollbar from '../HorizontalScrollbar/HorizontalScrollbar';
 
 const OrderCard = ({sets, id, setOrders, orders, prod}) => {  
   const { _id, title, price, discount, description, ingredients, imageUrl, oldPrice, novelty, action, cashback, weight } = sets.filter(item => item._id === id)[0];
@@ -15,6 +17,14 @@ const OrderCard = ({sets, id, setOrders, orders, prod}) => {
 
   let bonus = price ? Math.round(parseFloat(price) * 0.05) : Math.round(parseFloat(oldPrice) * 0.05);
 
+  //visibleItems це отфільтровані продукти, якщо All або акціі або новинки, якщо ні то фільтрує по prod
+  const filters = {
+    'All': () => sets.slice(0, 8),
+    'акціі': () => sets.filter(item => item.action === true),
+    'новинки': () => sets.filter(item => item.novelty === true),
+  };
+
+  const visibleItems = filters[prod]?.() || sets.filter(item => item.categories.toLowerCase() === prod.toLowerCase());
 
   return (
     <div className='order-card'>
@@ -60,7 +70,12 @@ const OrderCard = ({sets, id, setOrders, orders, prod}) => {
           Рекомендуємо спробувати:
         </h3>
         <div className="order-card__recomend-items">
-          <HorizontalScrollbar productId={_id} sets={sets} setOrders={setOrders} orders={orders} prod={prod}/>
+          <HorizontalScrollbar 
+            visibleItems={visibleItems}
+            renderItem={(item) => (
+              <Card item={item} setOrders={setOrders} orders={orders} />
+            )}
+            />
         </div>
       </div>
 

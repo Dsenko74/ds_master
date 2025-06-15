@@ -8,6 +8,7 @@
     align-items: stretch;
     gap: 40px;
     grid-template-columns: 1.8fr 1fr;
+    &:not(:last-child) {margin-bottom: 30px;}
   }
   &-main {
     &__head {
@@ -52,6 +53,9 @@
       justify-content: space-between;
       column-gap: 24px;
       &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex: 0 0 64px;
         height: 64px;
         border-radius: 50%;
@@ -128,6 +132,9 @@
       font-weight: bold;
       color: $titleColor;
     }
+  }
+  &-add {
+    position: relative;
   }
 
 }

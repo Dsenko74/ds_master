@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import Card from '../Card/Card';
 import RightArrowIcon from '../../assets/icon/right-arrow.png';
 import LeftArrowIcon from '../../assets/icon/left-arrow.png';
 
@@ -26,20 +25,7 @@ const RightArrow = () => {
   );
 };
 
-const HorizontalScrollbar = ({ productId, sets, setOrders, orders, prod}) => {
-  // потрібно переробити логіку виводу рекомендацій s винести в кастомний хук
-  //можливо використовувати щось біль сучасніше ніж ScrollMenu
-  // ScrollMenu не підтримує gap
-
-  //visibleItems це отфільтровані продукти, якщо All або акціі або новинки, якщо ні то фільтрує по prod
-    const filters = {
-    'All': () => sets.slice(0, 8),
-    'акціі': () => sets.filter(item => item.action === true),
-    'новинки': () => sets.filter(item => item.novelty === true),
-  };
-
-    const visibleItems = filters[prod]?.() || sets.filter(item => item.categories.toLowerCase() === prod.toLowerCase());
-
+const HorizontalScrollbar = ({ visibleItems, renderItem}) => {
 
   return (
       <ScrollMenu
@@ -52,7 +38,7 @@ const HorizontalScrollbar = ({ productId, sets, setOrders, orders, prod}) => {
               key={item._id}
               itemId={item._id}
             >
-              <Card item={item} setOrders={setOrders} orders={orders} />
+               {renderItem(item)}
             </div>
 
           ))}

@@ -10,6 +10,10 @@
   justify-content: flex-start;
   column-gap: 16px;
   &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 110px;
     width: 110px;
     height: 90px;
     img {

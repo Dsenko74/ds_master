@@ -3,6 +3,8 @@ import CartItem from '../components/CartItem/CartItem';
 import CartEmpty from '../components/CartEmpty/CartEmpty';
 import HalfEmptyCart from '../assets/icon/halfEmpty-cart-96.png';
 import ArrowPromo from '../assets/icon/arrow-right-promo.svg';
+import HorizontalScrollbar from '../components/HorizontalScrollbar/HorizontalScrollbar';
+import CardSmall from '../components/CardSmall/CardSmall';
 import './Cart.scss';
 
 
@@ -37,7 +39,8 @@ const totalAmount = filteredSets.reduce((sum, item) => {
     // Обробка введених даних
     console.log("Дані форми:", inputValue);
   };
-  
+  const visibleItems = sets.filter(item => item.categories.toLowerCase() === "десерти та напої");
+  console.log(visibleItems)
   return (
    totalCount ? ( 
     <div className='cart'>
@@ -91,7 +94,17 @@ const totalAmount = filteredSets.reduce((sum, item) => {
            
           </div>
         </div>
-        <div className="cart-add"></div>
+        <div className="cart-add">
+          <h3 className="order-card__recomend-title">
+          Додати до замовлення:
+          </h3>
+          <HorizontalScrollbar 
+            visibleItems={visibleItems}
+            renderItem={(item) => (
+              <CardSmall item={item} setOrders={setOrders} orders={orders} />
+            )}
+          />
+        </div>
       </div>
     </div>) : <CartEmpty clearCart={clearCart}/> 
   )
