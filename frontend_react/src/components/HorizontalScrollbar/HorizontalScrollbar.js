@@ -31,7 +31,7 @@ const HorizontalScrollbar = ({ productId, sets, setOrders, orders, prod}) => {
   //можливо використовувати щось біль сучасніше ніж ScrollMenu
   // ScrollMenu не підтримує gap
 
-  //visibleItems це отфільтровані продукти, якщо All або акціі абоновинки, якщо ні то фільтрує по prod
+  //visibleItems це отфільтровані продукти, якщо All або акціі або новинки, якщо ні то фільтрує по prod
     const filters = {
     'All': () => sets.slice(0, 8),
     'акціі': () => sets.filter(item => item.action === true),

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-import './AddToCardButton.scss';
+import './AddToCartButton.scss';
 
 
-const AddToCardButton = ({ setOrders, productId, orders }) => {
+const AddToCartButton = ({ setOrders, productId, orders }) => {
   const item = orders.find(item => item.id === productId);
   const quantity = item ? item.quantity : 0;
   const isEditing = quantity > 0;
@@ -51,4 +51,4 @@ const AddToCardButton = ({ setOrders, productId, orders }) => {
 
 
 
-export default AddToCardButton
+export default AddToCartButton

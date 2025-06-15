@@ -2,14 +2,20 @@
 
 .react-horizontal-scrolling-menu--scroll-container {
   overflow-x: hidden;
+  padding: 16px 0;
+  align-items: stretch;
+  height: auto;
+}
+.react-horizontal-scrolling-menu--item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .horizontal__item {
   width: 371px;
-  height: 465px;
+  height: 100%;
   margin: 16px 8px;
-
- 
-  
 }
 

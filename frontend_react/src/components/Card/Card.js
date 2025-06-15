@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Offers from '../Offers/Offers';
 import Cashback from '../../assets/icon/keshbek-vid.png';
-import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import './Card.scss';
 
 
@@ -41,7 +41,7 @@ const Card = ({item, setOrders, orders}) => {
           <p 
             className='card__oldprice ' 
             style={{ textDecoration: price ? 'line-through' : 'none' }}>{`${oldPrice} грн`}</p>
-          <AddToCardButton productId={_id} setOrders={setOrders} orders={orders}/>
+          <AddToCartButton productId={_id} setOrders={setOrders} orders={orders}/>
         </div>
       </div>
     </div>

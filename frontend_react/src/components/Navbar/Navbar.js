@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import Logo from '../../assets/icon/Logo.png';
 import Cart from '../../assets/icon/cart.png';
+import Search from '../../assets/icon/search.svg'
 
 
 const Navbar = ({setProd, orders, requiredIds}) => {
@@ -34,16 +35,25 @@ return (
           >
           <img src={Logo} alt='logo' className='navbar__img'/>
         </NavLink>
-        <Link
-          to='/cart'
-          onClick={(e) => {
-            if (totalCount === 0) e.preventDefault();
-          }}
-          className='navbar__cart'
+        <div className="navbar__header-right">
+          <Link
+            to='/search'
+            className='navbar__header-search'
           >
-            <img src={Cart} alt='cart' className='cart__img'/>
-            {totalCount ? <span>{totalCount}</span> : null}
-        </Link>
+            <img src={Search} alt="search" />
+          </Link>
+          <Link
+            to='/cart'
+            onClick={(e) => {
+              if (totalCount === 0) e.preventDefault();
+            }}
+            className='navbar__cart'
+            >
+              <img src={Cart} alt='cart' className='cart__img'/>
+              {totalCount ? <span>{totalCount}</span> : null}
+          </Link>
+        </div>
+
       </div>
 
       <div className="navbar__menu">

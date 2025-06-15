@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DeleteMark from  '../../assets/icon/icons8-cross-mark-78.png';
-import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 import './CartItem.scss';
 
@@ -32,7 +32,7 @@ const CartItem = ({item, setOrders, orders}) => {
         </Link>
         <span>{`${weight} г`}</span>
       </div>
-      <AddToCardButton productId={_id} setOrders={setOrders} orders={orders}/>
+      <AddToCartButton productId={_id} setOrders={setOrders} orders={orders}/>
       <div className="cart-item__prices">
         { price ? <p className='cart-item__prices-price'>{`${price*quantity}грн`}</p> : null}
         <span 

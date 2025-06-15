@@ -1,0 +1,2 @@
+в компоненті AddToCardButton розібратись як працює handleIncrement та handleDecrement
+в компоненті NavBar як працює totalCount

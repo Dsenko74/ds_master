@@ -4,7 +4,7 @@ import Cards from "./Cards/Cards";
 import Card from "./Card/Card";
 import SushiList from "./SushiList/SushiList";
 import Offers from "./Offers/Offers";
-import AddToCardButton from "./AddToCardButton/AddToCardButton";
+import AddToCartButton from "./AddToCartButton/AddToCartButton";
 
 
 
@@ -15,5 +15,5 @@ export {
   Card,
   SushiList,
   Offers,
-  AddToCardButton,
+  AddToCartButton,
 };

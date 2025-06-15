@@ -65,7 +65,26 @@
     column-gap: 16px;
     
     &:not(:last-child) {margin-bottom: 36px;}
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      column-gap: 16px;
+    }
+    &-search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
+
   &__menu {
     width: 100%;
     &-list {

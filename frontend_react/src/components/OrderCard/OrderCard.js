@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 import './OrderCard.scss';
 import Bonus from '../../assets/icon/bonus.svg';
@@ -33,7 +33,7 @@ const OrderCard = ({sets, id, setOrders, orders, prod}) => {
           <div className="div order-card__wrapper">
             {price ? <p className='order-card__price'>{`${price} грн`}</p>: <p className='order-card__price'>{`${oldPrice} грн`}</p>}
             {price? <p className='order-card__oldprice ' style={{ textDecoration: price ? 'line-through' : 'none' }}>{`${oldPrice} грн`} </p> : null}
-            <AddToCardButton productId={_id} setOrders={setOrders} orders={orders}/>
+            <AddToCartButton productId={_id} setOrders={setOrders} orders={orders}/>
           </div> 
           <div className="order-card__bonus">
             <img src={Bonus} alt="bonus" />
