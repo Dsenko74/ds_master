@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import OrderCard from '../components/OrderCard/OrderCard';
-import Recommendations from '../components/Recommendations/Recommendations';
 
 const Order = ({sets, setOrders, orders, prod}) => {
  
@@ -11,7 +10,6 @@ const Order = ({sets, setOrders, orders, prod}) => {
   return (
     <div className='container'>
       <OrderCard sets={sets} id={id} setOrders={setOrders} orders={orders} prod={prod}/>
-      <Recommendations />
     </div>
   )
 }

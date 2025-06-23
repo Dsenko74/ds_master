@@ -1,5 +1,5 @@
 import React from 'react'
-import FooterMenu from '../FooterMenu/FooterMenu';
+import FooterMenu from './FooterMenu';
 import '../Footer/Footer.scss';
 
 const FooterNavigation = () => {

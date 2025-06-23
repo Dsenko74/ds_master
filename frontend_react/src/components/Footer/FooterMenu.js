@@ -1,6 +1,6 @@
 import React from 'react';
-import FooterMenuItem from '../FooterMenuItem/FooterMenuItem';
-import '../Footer/Footer.scss';
+import FooterMenuItem from './FooterMenuItem';
+import './Footer.scss';
 
 import './FooterMenu.scss';
 
