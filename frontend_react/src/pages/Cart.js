@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import CartItem from '../components/CartItem/CartItem';
+//import CartItem from '../components/CartItem/CartItem';
 import CartEmpty from '../components/CartEmpty/CartEmpty';
-import HalfEmptyCart from '../assets/icon/halfEmpty-cart-96.png';
-import ArrowPromo from '../assets/icon/arrow-right-promo.svg';
 import HorizontalScrollbar from '../components/HorizontalScrollbar/HorizontalScrollbar';
 import CardSmall from '../components/CardSmall/CardSmall';
 import './Cart.scss';
+import CartMain from '../components/CartMain/CartMain';
+import CartOrder from '../components/CartOrder/CartOrder';
 
 
 // цей компонент необхідно розбити ще на декілька компонентів
@@ -32,7 +32,7 @@ const totalAmount = filteredSets.reduce((sum, item) => {
 }, 0);
   //функція для онулення кошика
   const clearCart = () => {
-    setOrders([]);
+     ;
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,53 +46,18 @@ const totalAmount = filteredSets.reduce((sum, item) => {
     <div className='cart'>
       <div className="container">
         <div className="cart-body">
-          <div className="cart-main">
-            <div className="cart-main__head">
-              <h3 className="cart-main__head-title">Моє замовлення</h3>
-              <button 
-                className="cart-main__head-btn"
-                onClick={() => clearCart()}
-                >
-                  очистити кошик
-              </button>
-            </div>
-          {filteredSets.map(item => (
-            <CartItem item={item} setOrders={setOrders} orders={orders}/>
-          ))}
-          </div>
-          <div className="cart-order">
-            <div className="cart-order__body">
-    {totalAmount < 700 ? <div className="cart-order__head">
-                          <div className="cart-order__head-icon">
-                            <img src={HalfEmptyCart} alt="icon" />
-                          </div>
-                          <p className="cart-order__head-txt">`Щоб оформити безкоштовну доставку додайте товарів на {700 - totalAmount} грн`</p>
-                        </div> : null}
-              <form className="cart-order__form" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="orderNote"
-                  placeholder="Є промокод?"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                />
-                <button type="submit">
-                  <img src={ArrowPromo} alt="ArrowPromo" />
-                </button>
-              </form>
-              <div className="cart-order__amount">
-                <p className="cart-order__amout-type">Товари</p>
-                <p className="cart-order__amout-value">{`${totalAmount} грн`}</p>
-              </div>
-{ totalAmount < 700 ?  <div className="cart-order__amount">
-                <p className="cart-order__amout-type">Доставка</p>
-                <p className="cart-order__amout-value">80 грн</p>
-              </div>: null}
-              <span className='cart-order__total'>{`${totalAmount} грн`}</span>
-              <button className='cart-order__btn'>{`Оформити ${totalAmount} грн`}</button>
-            </div>
-           
-          </div>
+          <CartMain 
+            filteredSets={filteredSets}
+            setOrders={setOrders}
+            orders={orders}
+            clearCart={clearCart}
+          />
+          <CartOrder 
+            totalAmount={totalAmount}
+            setInputValue={setInputValue}
+            inputValue={inputValue}
+            handleSubmit={handleSubmit}
+          />
         </div>
         <div className="cart-add">
           <h3 className="order-card__recomend-title">
