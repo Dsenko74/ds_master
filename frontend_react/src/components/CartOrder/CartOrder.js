@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HalfEmptyCart from '../../assets/icon/halfEmpty-cart-96.png';
 import ArrowPromo from '../../assets/icon/arrow-right-promo.svg';
 
@@ -6,7 +7,7 @@ const CartOrder = ({totalAmount, setInputValue, inputValue, handleSubmit}) => {
   return (
           <div className="cart-order">
             <div className="cart-order__body">
-             {totalAmount < 700 ? 
+             {totalAmount < 700 &&
               <div className="cart-order__head">
                 <div className="cart-order__head-icon">
                   <img src={HalfEmptyCart} alt="icon" />
@@ -14,7 +15,7 @@ const CartOrder = ({totalAmount, setInputValue, inputValue, handleSubmit}) => {
                 <p className="cart-order__head-txt">
                   `Щоб оформити безкоштовну доставку додайте товарів на {700 - totalAmount} грн`
                 </p>
-              </div> : null}
+              </div> }
               <form className="cart-order__form" onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -31,17 +32,24 @@ const CartOrder = ({totalAmount, setInputValue, inputValue, handleSubmit}) => {
                 <p className="cart-order__amout-type">Товари</p>
                 <p className="cart-order__amout-value">{`${totalAmount} грн`}</p>
               </div>
-              { totalAmount < 700 ?  
+              { totalAmount < 700 &&  
                 <div className="cart-order__amount">
                   <p className="cart-order__amout-type">Доставка</p>
                   <p className="cart-order__amout-value">80 грн</p>
-                </div>: null}
+                </div>}
               <span className='cart-order__total'>{`${totalAmount} грн`}</span>
-              <button className='cart-order__btn'>{`Оформити ${totalAmount} грн`}</button>
+
+                <Link 
+                  to='/finalize'
+                  className='cart-order__btn'>
+                    {`Оформити ${totalAmount} грн`}
+                </Link>
+
+
             </div>
            
           </div>
   )
 }
 
-export default CartOrder
+export default CartOrder;

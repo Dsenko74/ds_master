@@ -13,6 +13,7 @@ const Cart = ({sets, setOrders, orders, prod, requiredIds}) => {
   // цей стайт створений щоб до замовлення додати супутні продукти, окремий стейт
   const [filteredSets, setFilteredSets] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  
   useEffect(() => {
     const result = sets.filter(set =>
       orders.some(order => order.id === set._id)
@@ -40,7 +41,6 @@ const totalAmount = filteredSets.reduce((sum, item) => {
     console.log("Дані форми:", inputValue);
   };
   const visibleItems = sets.filter(item => item.categories.toLowerCase() === "десерти та напої");
-  console.log(visibleItems)
   return (
    totalCount ? ( 
     <div className='cart'>

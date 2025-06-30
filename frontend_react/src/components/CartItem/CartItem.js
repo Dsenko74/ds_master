@@ -15,9 +15,6 @@ const CartItem = ({item, setOrders, orders}) => {
     const deleteOrderById = (idToDelete) => {
       setOrders(prevOrders => prevOrders.filter(order => order.id !== idToDelete));
     };
-
-  
-
   return (
     <div className='cart-item'>
       <div className="cart-item__image">

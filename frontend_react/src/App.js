@@ -6,9 +6,11 @@ import Order from './pages/Order';
 import Cart from './pages/Cart';
 import { client } from './sanityClient';
 
+import Tester from '../src/components/Tester/Tester';
 
 import './App.scss';
 import Search from './pages/Search';
+import Finalize from './pages/Finalize';
 
 const  App =  () => {
   const [prod, setProd] = useState('All'); // вибір категорії
@@ -57,9 +59,6 @@ const  App =  () => {
     setProd('All'); // скидає категорію при переході на головну
   }
   }, [location.pathname]);
-
-
-
   const requiredIds = requiredProducts.map(p => p.id);
 
   return (
@@ -71,6 +70,8 @@ const  App =  () => {
         <Route path="/order/:id" element={<Order prod={prod} sets={sets} setOrders={setOrders} orders={orders}/>} />
         <Route path="/cart" element={<Cart prod={prod} sets={sets} setOrders={setOrders} orders={orders} requiredIds={requiredIds}/>} />
         <Route path="/search" element={<Search sets={sets} setOrders={setOrders} orders={orders} />} />
+        <Route path="/finalize" element={<Finalize />} />
+        <Route path="/test" element={<Tester />}/>
       </Routes>
       <Footer />
     </div>

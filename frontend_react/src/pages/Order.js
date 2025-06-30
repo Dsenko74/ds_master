@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { useParams } from 'react-router-dom';
 import OrderCard from '../components/OrderCard/OrderCard';
 
@@ -14,4 +14,4 @@ const Order = ({sets, setOrders, orders, prod}) => {
   )
 }
 
-export default Order
+export default Order;

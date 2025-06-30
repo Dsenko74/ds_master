@@ -20,4 +20,4 @@ const CartMain = ({filteredSets,clearCart, setOrders, orders}) => {
   )
 }
 
-export default CartMain
+export default CartMain;
