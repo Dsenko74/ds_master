@@ -51,6 +51,8 @@
     font-weight: 500;
   }
   &__content {
+    width: 100%;
+    max-width: 830px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
