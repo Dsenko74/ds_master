@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
 import { Formik, Field, Form, useFormikContext } from 'formik';
 import * as Yup from 'yup';
-
-import  './Finalize.scss';
 import FinalizeDelivery from '../components/Finalize/FinalizeDelivery';
 import FinalizeTextInput from '../components/Finalize/FinalizeTextInput';
 import FinalizeCheckbox from '../components/Finalize/FinalizeCheckbox';
 import FinalizeConditionalFields from '../components/Finalize/FinalizeConditionalFields';
 import FinalizeButtons from '../components/Finalize/FinalizeButtons';
 import FinalizeRadioGroup from '../components/Finalize/FinalizeRadioGroup';
+import ImageCard from '../assets/icon/card.svg';
+import ImageGoogle from '../assets/icon/google-pay.svg';
+import ImageCash from '../assets/icon/cash.svg';
+
+
+import  './Finalize.scss';
 
 const Finalize = () => {
   const [delivery, setDelivery] = useState(true);
@@ -31,6 +35,9 @@ const Finalize = () => {
                   entrance: '',
                   floor: '',
                   deliveryType: 'ASAP',
+                  deliveryDate: new Date().toISOString().split('T')[0],
+                  deliveryTime: "",
+                  payment: 'online',
                   terms: false
               }}
               validationSchema = {Yup.object({
@@ -74,7 +81,14 @@ const Finalize = () => {
                                   }
                                 ),
                             otherwise: (schema) => schema.notRequired(),
-                          }),                      
+                          }), 
+                  deliveryTime: Yup.string()
+                    .when('deliveryType', {
+                      is: 'time',
+                      then: (schema) => schema.required('Оберіть час доставки'),
+                      otherwise: (schema) => schema.notRequired(),
+                    }),
+
                   // terms: Yup.boolean()
                   //         .required('Необходимо согласие')
                   //         .oneOf([true], "Необходимо согласие")
@@ -125,7 +139,18 @@ const Finalize = () => {
                     name="deliveryType"
                       options={[
                         { label: 'Якомога швидше', value: 'ASAP' },
-                        { label: 'ДостНа певну годину', value: 'time' },
+                        { label: 'Доставимо на певну годину', value: 'time' },
+                      ]}
+                    /> 
+                </div>
+                <div className="finalize__payment">
+                  <FinalizeRadioGroup
+                    name="payment"
+                      options={[
+                        { label: 'Онлайн-оплата карткою', value: 'online', imageUrl: ImageCard },
+                        { label: 'Google pay', value: 'googlePay', imageUrl: ImageGoogle  },
+                        { label: 'Карткою при отриманні', value: 'cardAtHome', imageUrl: ImageCard  },
+                        { label: 'Готівкою', value: 'cash', imageUrl: ImageCash  },
                       ]}
                     /> 
                 </div>

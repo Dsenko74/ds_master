@@ -25,7 +25,8 @@ const DeliveryTimeNotice = () => {
 
   return (
     <span className="delivery-notice">
-      Привеземо як нашвидше у проміжок {interval}
+      Доставимо
+      <span>{interval}</span>
     </span>
   );
 };
