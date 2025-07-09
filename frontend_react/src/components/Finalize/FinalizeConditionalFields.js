@@ -7,7 +7,7 @@ const FinalizeConditionalFields = () => {
 
   return (
     <>
-      {!values.terms && (
+      {!values.privateHome && (
         <>
           <FinalizeTextInput
               label="Домофон "

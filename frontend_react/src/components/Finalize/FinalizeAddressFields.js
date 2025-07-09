@@ -13,7 +13,7 @@ const FinalizeAddressFields = () => {
         <FinalizeConditionalFields />
       </div>
       <div style={{ marginBottom: '24px' }}>
-        <FinalizeCheckbox name="terms">Це приватний будинок</FinalizeCheckbox>
+        <FinalizeCheckbox name="privateHome">Це приватний будинок</FinalizeCheckbox>
       </div>
       <FinalizeTextInput label="Назва" id="name" name="name" type="text" placeholder=" " autoComplete="off" />
       <FinalizeButtons />
