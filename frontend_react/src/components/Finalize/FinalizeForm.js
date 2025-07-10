@@ -14,28 +14,49 @@ const FinalizeForm = ({delivery}) => {
     if (delivery) {
       // доставка — валідуємо адресу
       return Yup.object({
-        street: Yup.string().min(4, 'Не менше 4 символів').required('Це обовязкове поле'),
-        house: Yup.number()
-          .typeError('Повинно бути числом')
-          .required('Це обовязкове поле')
-          .min(1, 'Не менше 1'),
-        apartment: Yup.number()
-          .typeError('Повинно бути числом')
-          .required('Це обовязкове поле')
-          .min(1, 'Не менше 1'),
-        entrance: Yup.number().typeError('Повинно бути числом').min(1, 'Не менше 1').notRequired(),
-        floor: Yup.number().typeError('Повинно бути числом').min(1, 'Не менше 1').notRequired(),
-        intercom: Yup.number()
-          .typeError('Повинно бути числом')
-          .required('Це обовязкове поле')
-          .test('minDigits', 'Не менше 3 розрядів', (value) => {
-            if (value === undefined || value === null) return false;
-            return value.toString().length >= 3;
-          }),
-        deliveryTime: Yup.string().when('deliveryType', {
-          is: 'time',
-          then: (schema) => schema.required('Оберіть час доставки'),
-          otherwise: (schema) => schema.notRequired(),
+                street: Yup.string().min(4, 'Не менше 4 символів').required('Це обовязкове поле'),
+                house: Yup.number()
+                  .typeError('Повинно бути числом')
+                  .required('Це обовязкове поле')
+                  .min(1, 'Не менше 1'),
+                apartment: Yup.number()
+                  .typeError('Повинно бути числом')
+                  .when('privateHome', {
+                    is: false,
+                    then: (schema) => schema.required('Це обовязкове поле').min(1, 'Не менше 1'),
+                    otherwise: (schema) => schema.notRequired(),
+                  }),
+                entrance: Yup.number()
+                  .typeError('Повинно бути числом')
+                  .when('privateHome', {
+                    is: false,
+                    then: (schema) => schema.required('Це обовязкове поле').min(1, 'Не менше 1'),
+                    otherwise: (schema) => schema.notRequired(),
+                  }),
+                floor: Yup.number()
+                  .typeError('Повинно бути числом')
+                  .when('privateHome', {
+                    is: false,
+                    then: (schema) => schema.required('Це обовязкове поле').min(1, 'Не менше 1'),
+                    otherwise: (schema) => schema.notRequired(),
+                  }),
+                intercom: Yup.number()
+                  .typeError('Повинно бути числом')
+                  .when('privateHome', {
+                    is: false,
+                    then: (schema) =>
+                      schema
+                        .required('Це обовязкове поле')
+                        .test('minDigits', 'Не менше 3 розрядів', (value) => {
+                          if (value === undefined || value === null) return false;
+                          return value.toString().length >= 3;
+                        }),
+                    otherwise: (schema) => schema.notRequired(),
+                  }),
+                deliveryTime: Yup.string().when('deliveryType', {
+                  is: 'time',
+                  then: (schema) => schema.required('Оберіть час доставки'),
+                  otherwise: (schema) => schema.notRequired(),
         }),
         // інші поля, що потрібні при доставці
       });

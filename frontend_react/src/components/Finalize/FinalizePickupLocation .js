@@ -17,7 +17,10 @@ const FinalizePickupLocation = ({ name, options }) => {
   }
 
   return (
-    <div className="finalize__pickup-items">
+    <div 
+      className="finalize__pickup-items"   style={{
+      overflowY: field.value ? 'hidden' : 'scroll',//поле field.value існує тільки коли ресторан обраний
+    }}>
       {visibleOptions.map((opt) => (
         <div key={opt.value} className='finalize__pickup-item'>
           <label  className="radio-option">
