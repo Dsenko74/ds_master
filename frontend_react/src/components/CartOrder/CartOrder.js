@@ -4,6 +4,8 @@ import HalfEmptyCart from '../../assets/icon/halfEmpty-cart-96.png';
 import ArrowPromo from '../../assets/icon/arrow-right-promo.svg';
 
 const CartOrder = ({totalAmount, setInputValue, inputValue, handleSubmit}) => {
+  const deliveryPrice = totalAmount < 700 ? 80 : 0;
+
   return (
           <div className="cart-order">
             <div className="cart-order__body">
@@ -35,14 +37,14 @@ const CartOrder = ({totalAmount, setInputValue, inputValue, handleSubmit}) => {
               { totalAmount < 700 &&  
                 <div className="cart-order__amount">
                   <p className="cart-order__amout-type">Доставка</p>
-                  <p className="cart-order__amout-value">80 грн</p>
+                  <p className="cart-order__amout-value">{`${deliveryPrice} грн`} </p>
                 </div>}
-              <span className='cart-order__total'>{`${totalAmount} грн`}</span>
+              <span className='cart-order__total'>{`${totalAmount + deliveryPrice} грн`}</span>
 
                 <Link 
                   to='/finalize'
                   className='cart-order__btn'>
-                    {`Оформити ${totalAmount} грн`}
+                    {`Оформити ${totalAmount + deliveryPrice} грн`}
                 </Link>
 
 

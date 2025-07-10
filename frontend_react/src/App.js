@@ -11,6 +11,7 @@ import Tester from '../src/components/Tester/Tester';
 import './App.scss';
 import Search from './pages/Search';
 import Finalize from './pages/Finalize';
+import ScrollToTop from './utils/ScrollToTop';
 
 const  App =  () => {
   const [prod, setProd] = useState('All'); // вибір категорії
@@ -63,6 +64,7 @@ const  App =  () => {
 
   return (
     <div className='App'>
+     <ScrollToTop />   
       <Navbar setProd={setProd} orders={orders} requiredIds={requiredIds}/>
       <Routes>
         <Route path="/" element={<Home sets={sets} prod={prod} setOrders={setOrders} orders={orders} />} />
