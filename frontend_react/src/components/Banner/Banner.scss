@@ -1,6 +1,8 @@
-@import '../../styles/_variables';
+@import "../../styles/_variables";
 
-body {overflow-x: hidden;}
+body {
+  overflow-x: hidden;
+}
 
 .banner {
   position: relative;
@@ -10,15 +12,16 @@ body {overflow-x: hidden;}
   // margin-right: -50vw;
   width: 100vw;
   overflow: hidden;
-  .left-arrow, .right-arrow {
+  .left-arrow,
+  .right-arrow {
     top: 50%;
     transform: translateY(-50%);
     background: #fff;
-      img {
-        width: 20px;
-        height: 20px;
-        object-fit:cover;
-      }
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
   }
   .left-arrow {
     left: 20px;
@@ -44,8 +47,8 @@ body {overflow-x: hidden;}
 
   .slide-side {
     width: 40vw;
-   //  transition: transform 0.5s ease, width 0.5s ease;
-   // width: 600px;
+    //  transition: transform 0.5s ease, width 0.5s ease;
+    // width: 600px;
   }
 
   img {
@@ -71,5 +74,8 @@ body {overflow-x: hidden;}
 
   .swiper-button-next {
     right: 10px;
+  }
+  .swiper-wrapper {
+    margin-bottom: 36px;
   }
 }

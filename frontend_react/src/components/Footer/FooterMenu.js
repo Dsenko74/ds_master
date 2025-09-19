@@ -1,28 +1,76 @@
-import React from 'react';
-import FooterMenuItem from './FooterMenuItem';
-import './Footer.scss';
+// import React from "react";
+// import FooterMenuItem from "./FooterMenuItem";
+// import "./Footer.scss";
 
-import './FooterMenu.scss';
+// import "./FooterMenu.scss";
 
+// const FooterMenu = ({ title, items, variant }) => {
+//   return (
+//     <details className="footer-navigation__menu spoiler" open>
+//       <summary className="footer-navigation__title">{title}</summary>
+//       <ul className="footer-navigation__menu-list">
+//         {items.map((item, index) => (
+//           <FooterMenuItem
+//             key={index}
+//             label={item.label}
+//             href={item.href}
+//             variant={variant}
+//           />
+//         ))}
+//       </ul>
+//     </details>
+//   );
+// };
 
+// export default FooterMenu;
+import React from "react";
+import FooterMenuItem from "./FooterMenuItem";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useMediaQuery } from "@mui/material";
+import "./Footer.scss";
+import "./FooterMenu.scss";
 
-const FooterMenu = ({ title, items, variant }) => {
+const FooterMenu = ({ title, items, variant, defaultExpanded }) => {
+  const isMobile = useMediaQuery("(max-width:500px)");
+
+  if (isMobile) {
+    return (
+      <Accordion defaultExpanded={defaultExpanded}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          {title}
+        </AccordionSummary>
+        <AccordionDetails>
+          {items.map((item, index) => (
+            <FooterMenuItem
+              key={index}
+              label={item.label}
+              href={item.href}
+              variant={variant}
+            />
+          ))}
+        </AccordionDetails>
+      </Accordion>
+    );
+  }
+
   return (
     <div className="footer-navigation__menu">
       <h5 className="footer-navigation__title">{title}</h5>
       <ul className="footer-navigation__menu-list">
         {items.map((item, index) => (
-          <FooterMenuItem 
-            key={index} 
-            label={item.label} 
+          <FooterMenuItem
+            key={index}
+            label={item.label}
             href={item.href}
-            variant={variant} />
+            variant={variant}
+          />
         ))}
       </ul>
     </div>
-
-
   );
 };
 
-export default FooterMenu
+export default FooterMenu;

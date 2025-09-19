@@ -11,6 +11,7 @@
   border: none;
   color: white;
   white-space: nowrap;
+  cursor: pointer;
   &-active {
     background-color: $pink;
     color: $red;

@@ -5,8 +5,9 @@ import FinalizeDelivery from '../components/Finalize/FinalizeDelivery';
 
 import  './Finalize.scss';
 import FinalizeForm from '../components/Finalize/FinalizeForm';
+import FinalizeOrder from '../components/Finalize/FinalizeOrder';
 
-const Finalize = () => {
+const Finalize = ({ sets, orders}) => {
   const [delivery, setDelivery] = useState(true);
 
   return (
@@ -19,7 +20,9 @@ const Finalize = () => {
             />
           <FinalizeForm delivery={delivery} />
         </div>
-        <div className="finalize__right"></div>
+        <div className="finalize__right">
+          <FinalizeOrder sets={sets}  orders={orders}/>
+        </div>
       </div>
     </div>
   )

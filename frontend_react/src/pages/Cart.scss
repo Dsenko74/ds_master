@@ -1,4 +1,4 @@
-@import '../../src/styles/variables';
+@import "../../src/styles/variables";
 
 .cart {
   width: 100%;
@@ -8,7 +8,9 @@
     align-items: stretch;
     gap: 40px;
     grid-template-columns: 1.8fr 1fr;
-    &:not(:last-child) {margin-bottom: 30px;}
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
   }
   &-main {
     &__head {
@@ -16,7 +18,8 @@
       align-items: center;
       justify-content: space-between;
       &:not(:last-child) {
-        margin-bottom: 36px;}
+        margin-bottom: 36px;
+      }
       &-title {
         font-size: 32px;
         font-weight: 700;
@@ -42,7 +45,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      box-shadow: 8px 8px 16px hsla(236, 6%, 49%, .15);
+      box-shadow: 8px 8px 16px hsla(236, 6%, 49%, 0.15);
       padding: 24px;
       border-radius: 8px;
       row-gap: 16px;
@@ -80,11 +83,14 @@
       border: 1px solid #dbdddd;
       padding: 3px;
       input {
-        flex:1;
+        min-width: auto;
+        width: auto;
+        max-width: auto;
+        flex: 1;
         position: relative;
         border: none;
         height: 56px;
-        padding: 0 55px 0 12px;
+        padding-left: 12px;
         &:focus-visible {
           outline: none;
         }
@@ -129,8 +135,9 @@
       border: none;
       color: white;
       white-space: nowrap;
+      cursor: pointer;
     }
-     &__total {
+    &__total {
       width: 100%;
       font-size: 24px;
       font-weight: bold;
@@ -140,5 +147,11 @@
   &-add {
     position: relative;
   }
+}
 
+@media (max-width: 991px) {
+  .cart-body {
+    display: flex;
+    flex-direction: column;
+  }
 }

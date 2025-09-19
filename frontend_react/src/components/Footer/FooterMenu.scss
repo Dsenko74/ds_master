@@ -1,1 +1,28 @@
-@import '../../styles/_variables';
+@import "../../styles/_variables";
+/* Приховати стандартний маркер трикутника, якщо потрібен кастомний */
+.spoiler summary::-webkit-details-marker {
+  display: none;
+}
+
+/* На малих екранах – нормальні спойлери */
+@media (max-width: 500px) {
+  .spoiler {
+    cursor: pointer;
+  }
+}
+
+/* На екранах ширше 500px */
+@media (min-width: 501px) {
+  .spoiler {
+    display: block;
+  }
+  .spoiler[open] {
+    display: block;
+  }
+  .spoiler summary {
+    pointer-events: none; /* блокує згортання */
+  }
+  .spoiler ul {
+    display: grid; /* гарантовано видно меню */
+  }
+}

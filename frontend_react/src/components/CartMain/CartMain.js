@@ -10,7 +10,7 @@ const CartMain = ({filteredSets,clearCart, setOrders, orders}) => {
           className="cart-main__head-btn"
           onClick={() => setOrders([])}
           >
-            очистити кошик
+            очистити кошик  
         </button>
       </div>
       {filteredSets.map(item => (

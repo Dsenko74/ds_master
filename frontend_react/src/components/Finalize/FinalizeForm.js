@@ -7,13 +7,15 @@ import FinalizeDeliveryType from './FinalizeDeliveryType';
 import FinalizePayment from './FinalizePayment';
 import FinalizeSubmitButton from './FinalizeSubmitButton';
 import FinalizePickup from './FinalizePickup';
+import FinalizePrivacy from './FinalizePrivacy';
 
 const FinalizeForm = ({delivery}) => {
-  console.log(delivery)
   const getValidationSchema = (delivery) => {
     if (delivery) {
       // доставка — валідуємо адресу
       return Yup.object({
+                privacyPolicy: Yup.boolean()
+                  .oneOf([true], 'Це обов’язкове поле'),
                 street: Yup.string().min(4, 'Не менше 4 символів').required('Це обовязкове поле'),
                 house: Yup.number()
                   .typeError('Повинно бути числом')
@@ -64,6 +66,13 @@ const FinalizeForm = ({delivery}) => {
       // самовивіз — валідуємо лише потрібні поля
       return Yup.object({
         pickupLocation: Yup.string().required('Оберіть ресторан для самовивозу'),
+        deliveryTime: Yup.string().when('deliveryType', {
+          is: 'time',
+          then: (schema) => schema.required('Оберіть час доставки'),
+          otherwise: (schema) => schema.notRequired(),
+           }),
+        privacyPolicy: Yup.boolean()
+              .oneOf([true], 'Це обов’язкове поле'),           
         // інші поля для самовивозу, якщо потрібно
       });
     }
@@ -73,6 +82,7 @@ const FinalizeForm = ({delivery}) => {
 
   return (
     <Formik
+      key={delivery ? 'delivery' : "pickup"}
       initialValues={{
         street: '',
         house: '',
@@ -88,42 +98,9 @@ const FinalizeForm = ({delivery}) => {
         pickupSearch: '',
         pickupLocation: '', 
         privateHome: false,
+        privacyPolicy: false,
       }}
-      // validationSchema={Yup.object({
-      //   street: Yup.string().min(4, 'Не менше 4 символів').required('Це обовязкове поле'),
-      //   house: Yup.number()
-      //     .typeError('Повинно бути числом')
-      //     .required('Це обовязкове поле')
-      //     .min(1, 'Не менше 1'),
-      //   apartment: Yup.number()
-      //     .typeError('Повинно бути числом')
-      //     .when('privateHome', {
-      //       is: false,
-      //       then: (schema) => schema.required('Це обовязкове поле').min(1, 'Не менше 1'),
-      //       otherwise: (schema) => schema.notRequired(),
-      //     })
-      //     .min(1, 'Не менше 1'),
-      //   entrance: Yup.number().typeError('Повинно бути числом').min(1, 'Не менше 1'),
-      //   floor: Yup.number().typeError('Повинно бути числом').min(1, 'Не менше 1'),
-      //   intercom: Yup.number()
-      //     .typeError('Повинно бути числом')
-      //     .when('privateHome', {
-      //       is: false,
-      //       then: (schema) =>
-      //         schema
-      //           .required('Це обовязкове поле')
-      //           .test('minDigits', 'Не менше 3 розрядів', (value) => {
-      //             if (value === undefined || value === null) return false;
-      //             return value.toString().length >= 3;
-      //           }),
-      //       otherwise: (schema) => schema.notRequired(),
-      //     }),
-      //   deliveryTime: Yup.string().when('deliveryType', {
-      //     is: 'time',
-      //     then: (schema) => schema.required('Оберіть час доставки'),
-      //     otherwise: (schema) => schema.notRequired(),
-      //   }),
-      // })}
+
       validationSchema={validationSchema}
       onSubmit={(values) => console.log(JSON.stringify(values, null, 2))}
     >
@@ -131,6 +108,7 @@ const FinalizeForm = ({delivery}) => {
         {delivery ? <FinalizeAddressFields /> : <FinalizePickup/>}
         <FinalizeDeliveryType />
         <FinalizePayment />
+        <FinalizePrivacy />
         <FinalizeSubmitButton />
       </Form>
     </Formik>

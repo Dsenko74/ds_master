@@ -6,7 +6,7 @@ import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import './CartItem.scss';
 
 const CartItem = ({item, setOrders, orders}) => {
-    const { _id, title, price, discount, description, ingredients, imageUrl, oldPrice, novelty, action, cashback, weight } = item;
+    const { _id, title, price, imageUrl, oldPrice, weight } = item;
     
     // тут дістаємо кількість товару
     const quantity = orders.find(item => item.id === _id)?.quantity || 0;
@@ -31,12 +31,12 @@ const CartItem = ({item, setOrders, orders}) => {
       </div>
       <AddToCartButton productId={_id} setOrders={setOrders} orders={orders}/>
       <div className="cart-item__prices">
-        { price ? <p className='cart-item__prices-price'>{`${price*quantity}грн`}</p> : null}
+        { price ? <p className='cart-item__prices-price'>{`${price}грн`}</p> : null}
         <span 
           className={
             price ? 'cart-item__prices-old' : 'cart-item__prices-old cart-item__prices-old_new'}
             >
-            {`${oldPrice*quantity} грн`}</span>
+            {`${oldPrice} грн`}</span>
       </div>
       <button 
         className="cart-item__delete"

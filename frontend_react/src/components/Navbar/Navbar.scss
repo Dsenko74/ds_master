@@ -86,12 +86,42 @@
   }
 
   &__menu {
-    width: 100%;
+    // width: 100%;
+    //overflow: auto;
+    position: relative;
+    @media (max-width: 1280px) {
+      padding: 0 20px;
+      .left-arrow__nav, .right-arrow__nav {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        width: 24px;
+        height: 24px;
+        outline: none;
+        background: transparent;
+          img {
+            width: 20px;
+            height: 20px;
+            object-fit:cover;
+          }
+      }
+      .left-arrow__nav {
+        left: 0px;
+      }
+      .right-arrow__nav {
+        right: 0px;
+      }
+    }
+
     &-list {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      //flex-wrap: wrap;
       column-gap: 16px;
       row-gap: 5px;
     
@@ -111,6 +141,7 @@
       cursor: pointer;
       padding: 5px;
       border: 1px solid transparent;
+      white-space: nowrap;
 
       &.active {
         color: $red;
