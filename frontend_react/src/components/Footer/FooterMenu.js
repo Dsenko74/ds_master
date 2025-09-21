@@ -33,19 +33,19 @@ import { useMediaQuery } from "@mui/material";
 import "./Footer.scss";
 import "./FooterMenu.scss";
 
-const FooterMenu = ({ title, items, variant, defaultExpanded }) => {
+const FooterMenu = ({ title, items, variant, expanded, onChange }) => {
   const isMobile = useMediaQuery("(max-width:500px)");
 
   if (isMobile) {
     return (
-      <Accordion defaultExpanded={defaultExpanded}>
+      <Accordion expanded={expanded} onChange={onChange}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           {title}
         </AccordionSummary>
         <AccordionDetails>
-          {items.map((item, index) => (
+          {items.map((item, i) => (
             <FooterMenuItem
-              key={index}
+              key={i}
               label={item.label}
               href={item.href}
               variant={variant}
@@ -60,9 +60,9 @@ const FooterMenu = ({ title, items, variant, defaultExpanded }) => {
     <div className="footer-navigation__menu">
       <h5 className="footer-navigation__title">{title}</h5>
       <ul className="footer-navigation__menu-list">
-        {items.map((item, index) => (
+        {items.map((item, i) => (
           <FooterMenuItem
-            key={index}
+            key={i}
             label={item.label}
             href={item.href}
             variant={variant}

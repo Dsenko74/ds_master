@@ -1,9 +1,65 @@
-import React from "react";
+// import React from "react";
+// import FooterMenu from "./FooterMenu";
+// import "../Footer/Footer.scss";
+
+// const FooterNavigation = () => {
+//   // треба винести footerMenus в Sanity
+//   return (
+//     <div className="footer-navigation">
+//       {footerMenus.map((menu, index) => (
+//         <FooterMenu
+//           key={index}
+//           title={menu.title}
+//           items={menu.items}
+//           variant={menu.variant}
+//           defaultExpanded={index === 0}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default FooterNavigation;
+import React, { useState } from "react";
 import FooterMenu from "./FooterMenu";
 import "../Footer/Footer.scss";
+const footerMenus = [
+  {
+    title: "SUSHI MASTER UA",
+    items: [
+      { label: "Про компанію", href: "#" },
+      { label: "Відгуки клієнтів", href: "#" },
+      { label: "Акції", href: "#" },
+      { label: "Бонуси, програма лояльності", href: "#" },
+    ],
+  },
+  {
+    title: "Юридична iнформація",
+    items: [
+      { label: "Публічна оферта", href: "#" },
+      { label: "Політика конфіденційності", href: "#" },
+    ],
+  },
+  {
+    title: "Доставка та ресторани",
+    items: [
+      { label: "Доставка та самовиніс", href: "#" },
+      { label: "Наші ресторани", href: "#" },
+    ],
+  },
+  {
+    title: "Підтримка",
+    variant: "bold",
+    items: [
+      { label: "0 800 330 333", href: "#" },
+      { label: "TURBOTA@SUSHI-MASTER.UA", href: "#" },
+    ],
+  },
+];
 
 const FooterNavigation = () => {
-  // треба винести footerMenus в Sanity
+  const [expanded, setExpanded] = useState(0);
+
   const footerMenus = [
     {
       title: "SUSHI MASTER UA",
@@ -37,6 +93,7 @@ const FooterNavigation = () => {
       ],
     },
   ];
+
   return (
     <div className="footer-navigation">
       {footerMenus.map((menu, index) => (
@@ -45,7 +102,8 @@ const FooterNavigation = () => {
           title={menu.title}
           items={menu.items}
           variant={menu.variant}
-          defaultExpanded={index === 0}
+          expanded={expanded === index}
+          onChange={() => setExpanded(expanded === index ? false : index)}
         />
       ))}
     </div>

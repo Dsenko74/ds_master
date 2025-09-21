@@ -79,3 +79,11 @@ body {
     margin-bottom: 36px;
   }
 }
+@media (max-width: 768px) {
+  .banner {
+    .left-arrow,
+    .right-arrow {
+      display: none;
+    }
+  }
+}

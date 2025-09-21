@@ -1,4 +1,4 @@
-@import '../../styles/_variables';
+@import "../../styles/_variables";
 
 .footer {
   margin: 36px 0 0;
@@ -23,7 +23,7 @@
         justify-content: flex-start;
       }
       &-link {
-        font-style: 16px;
+        font-size: 16px;
         font-weight: 400;
         color: $txtDescr;
         text-decoration: none;
@@ -39,13 +39,28 @@
     }
     &__title {
       color: $textColor;
-      font-style: 16px;
+      font-size: 16px;
       font-weight: bold;
       &:not(:last-child) {
         margin-bottom: 25px;
       }
     }
- 
+    .MuiAccordion-root {
+      box-shadow: none;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .MuiAccordionDetails-root {
+      display: grid;
+      gap: 25px;
+    }
+
+    .MuiAccordionSummary-content {
+      font-weight: 700;
+    }
   }
   &-social {
     display: flex;
