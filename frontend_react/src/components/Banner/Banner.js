@@ -38,15 +38,13 @@ const Banner = () => {
           clickable: true, // кружечки клікабельні
         }}
         loop={true}
-        //centeredSlides
         watchSlidesProgress={true}
         watchSlidesVisibility={true}
         initialSlide={1}
-        loopedSlides={images.length} // ✅ додай це
         centeredSlides={false} // true
-        loopAdditionalSlides={4}
         slidesPerView="1" //дефолт 1, було auto
         spaceBetween={16}
+        speed={800}
         breakpoints={{
           0: {
             slidesPerView: 1, // до 768px два слайди
@@ -57,7 +55,7 @@ const Banner = () => {
             centeredSlides: false,
           },
           768: {
-            slidesPerView: "auto", // вище 768px як було
+            slidesPerView: "auto", // вище 768px як було"auto"
             centeredSlides: true,
           },
         }}
