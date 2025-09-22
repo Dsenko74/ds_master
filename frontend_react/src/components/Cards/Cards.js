@@ -5,7 +5,7 @@ import "./Cards.scss";
 const Cards = ({ sets, setOrders, orders, prod }) => {
   const filters = {
     All: () => sets.slice(0, 8),
-    акціі: () => sets.filter((item) => item.action === true),
+    акції: () => sets.filter((item) => item.action === true),
     новинки: () => sets.filter((item) => item.novelty === true),
   };
 

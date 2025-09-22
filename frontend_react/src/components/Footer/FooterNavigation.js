@@ -23,39 +23,39 @@
 import React, { useState } from "react";
 import FooterMenu from "./FooterMenu";
 import "../Footer/Footer.scss";
-const footerMenus = [
-  {
-    title: "SUSHI MASTER UA",
-    items: [
-      { label: "Про компанію", href: "#" },
-      { label: "Відгуки клієнтів", href: "#" },
-      { label: "Акції", href: "#" },
-      { label: "Бонуси, програма лояльності", href: "#" },
-    ],
-  },
-  {
-    title: "Юридична iнформація",
-    items: [
-      { label: "Публічна оферта", href: "#" },
-      { label: "Політика конфіденційності", href: "#" },
-    ],
-  },
-  {
-    title: "Доставка та ресторани",
-    items: [
-      { label: "Доставка та самовиніс", href: "#" },
-      { label: "Наші ресторани", href: "#" },
-    ],
-  },
-  {
-    title: "Підтримка",
-    variant: "bold",
-    items: [
-      { label: "0 800 330 333", href: "#" },
-      { label: "TURBOTA@SUSHI-MASTER.UA", href: "#" },
-    ],
-  },
-];
+// const footerMenus = [
+//   {
+//     title: "SUSHI MASTER UA",
+//     items: [
+//       { label: "Про компанію", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "Відгуки клієнтів", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "Акції", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "Бонуси, програма лояльності", href: "https://kyiv.sushi-master.ua/" },
+//     ],
+//   },
+//   {
+//     title: "Юридична iнформація",
+//     items: [
+//       { label: "Публічна оферта", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "Політика конфіденційності", href: "https://kyiv.sushi-master.ua/" },
+//     ],
+//   },
+//   {
+//     title: "Доставка та ресторани",
+//     items: [
+//       { label: "Доставка та самовиніс", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "Наші ресторани", href: "https://kyiv.sushi-master.ua/" },
+//     ],
+//   },
+//   {
+//     title: "Підтримка",
+//     variant: "bold",
+//     items: [
+//       { label: "0 800 330 333", href: "https://kyiv.sushi-master.ua/" },
+//       { label: "TURBOTA@SUSHI-MASTER.UA", href: "https://kyiv.sushi-master.ua/" },
+//     ],
+//   },
+// ];
 
 const FooterNavigation = () => {
   const [expanded, setExpanded] = useState(0);
@@ -64,32 +64,44 @@ const FooterNavigation = () => {
     {
       title: "SUSHI MASTER UA",
       items: [
-        { label: "Про компанію", href: "#" },
-        { label: "Відгуки клієнтів", href: "#" },
-        { label: "Акції", href: "#" },
-        { label: "Бонуси, програма лояльності", href: "#" },
+        { label: "Про компанію", href: "https://kyiv.sushi-master.ua/" },
+        { label: "Відгуки клієнтів", href: "https://kyiv.sushi-master.ua/" },
+        { label: "Акції", href: "https://kyiv.sushi-master.ua/" },
+        {
+          label: "Бонуси, програма лояльності",
+          href: "https://kyiv.sushi-master.ua/",
+        },
       ],
     },
     {
       title: "Юридична iнформація",
       items: [
-        { label: "Публічна оферта", href: "#" },
-        { label: "Політика конфіденційності", href: "#" },
+        { label: "Публічна оферта", href: "https://kyiv.sushi-master.ua/" },
+        {
+          label: "Політика конфіденційності",
+          href: "https://kyiv.sushi-master.ua/",
+        },
       ],
     },
     {
       title: "Доставка та ресторани",
       items: [
-        { label: "Доставка та самовиніс", href: "#" },
-        { label: "Наші ресторани", href: "#" },
+        {
+          label: "Доставка та самовиніс",
+          href: "https://kyiv.sushi-master.ua/",
+        },
+        { label: "Наші ресторани", href: "https://kyiv.sushi-master.ua/" },
       ],
     },
     {
       title: "Підтримка",
       variant: "bold",
       items: [
-        { label: "0 800 330 333", href: "#" },
-        { label: "TURBOTA@SUSHI-MASTER.UA", href: "#" },
+        { label: "0 800 330 333", href: "https://kyiv.sushi-master.ua/" },
+        {
+          label: "TURBOTA@SUSHI-MASTER.UA",
+          href: "https://kyiv.sushi-master.ua/",
+        },
       ],
     },
   ];

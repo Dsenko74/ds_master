@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from "../components/Cards/Cards";
 import Banner from "../components/Banner/Banner";
+import { getDisplayName } from "../config/menuConfig";
 
 const Home = ({ sets, prod, setOrders, orders }) => {
   return (
@@ -8,7 +9,7 @@ const Home = ({ sets, prod, setOrders, orders }) => {
       {prod === "All" ? <Banner /> : null}
       <div className="container">
         <h3 className="title" style={{ marginBottom: "20px" }}>
-          {prod === "All" ? "Доставка суши Київ" : prod}
+          {prod === "All" ? "Доставка суши Київ" : getDisplayName(prod)}
         </h3>
         <Cards sets={sets} setOrders={setOrders} orders={orders} prod={prod} />
       </div>

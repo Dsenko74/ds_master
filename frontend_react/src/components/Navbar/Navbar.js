@@ -6,6 +6,7 @@ import useWindowWidth from "../../utils/useWindowWidth";
 import Logo from "../../assets/icon/Logo.png";
 import Cart from "../../assets/icon/cart.png";
 import Search from "../../assets/icon/search.svg";
+import { menuItems, getDisplayName } from "../../config/menuConfig";
 
 import "./Navbar.scss";
 
@@ -15,21 +16,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Navbar = ({ setProd, orders, requiredIds }) => {
-  // const [activeIndex, setActiveIndex] = useState(0);
-  const menuItems = [
-    "Сети",
-    "Роли",
-    "Акціі",
-    "Комбо",
-    "Новинки",
-    "Суші бургери",
-    "Суші",
-    "Гаряче та салати",
-    "Десерти та напої",
-    "Доповнення",
-    "Філадельфії",
-    "Каліфорніі",
-  ];
   //це функція виводить суму замовлених товарів, без врахування обов'язкових
   //
   const totalCount = orders
@@ -77,18 +63,18 @@ const Navbar = ({ setProd, orders, requiredIds }) => {
               {menuItems.map((item, index) => (
                 <li className="navbar__menu-item">
                   <NavLink
-                    to={`/category/${item.toLowerCase()}`}
+                    to={`/category/${item.key}`}
                     className={({ isActive }) =>
                       isActive
                         ? "active navbar__menu-link"
                         : "navbar__menu-link"
                     }
                     onClick={() => {
-                      setProd(item.toLowerCase());
+                      setProd(item.key);
                     }}
                     key={index}
                   >
-                    {item}
+                    {item.icon ? `${item.icon} ${item.label}` : item.label}
                   </NavLink>
                 </li>
               ))}
@@ -156,7 +142,7 @@ const Navbar = ({ setProd, orders, requiredIds }) => {
                       key={index}
                       //style={{ width: 'auto' }}
                     >
-                      <NavLink
+                      {/* <NavLink
                         to={`/category/${item.toLowerCase()}`}
                         className={({ isActive }) =>
                           isActive
@@ -168,6 +154,21 @@ const Navbar = ({ setProd, orders, requiredIds }) => {
                         }}
                       >
                         {item}
+                      </NavLink> */}
+
+                      <NavLink
+                        to={`/category/${item.key}`}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "active navbar__menu-link"
+                            : "navbar__menu-link"
+                        }
+                        onClick={() => {
+                          setProd(item.key);
+                        }}
+                        key={index}
+                      >
+                        {item.icon ? `${item.icon} ${item.label}` : item.label}
                       </NavLink>
                     </SwiperSlide>
                   );

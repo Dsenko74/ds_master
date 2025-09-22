@@ -18,7 +18,6 @@ const App = () => {
   const [sets, setSets] = useState([]); //база всіх продуктів
   const [orders, setOrders] = useState([]); //стейт з заказами
   const location = useLocation();
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await client.fetch(`*[_type == "dsmaster"]{
@@ -54,7 +53,7 @@ const App = () => {
       setOrders(requiredProducts);
     }
   }, [orders]);
-  
+
   // скидаємо prod до All коли корзина очищується
   useEffect(() => {
     if (location.pathname === "/") {
@@ -119,7 +118,9 @@ const App = () => {
         />
         <Route
           path="/finalize"
-          element={<Finalize sets={sets} orders={orders} />}
+          element={
+            <Finalize sets={sets} orders={orders} setOrders={setOrders} />
+          }
         />
         {/* <Route path="/test" element={<Tester />}/> */}
       </Routes>

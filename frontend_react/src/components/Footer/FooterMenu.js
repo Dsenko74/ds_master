@@ -34,7 +34,7 @@ import "./Footer.scss";
 import "./FooterMenu.scss";
 
 const FooterMenu = ({ title, items, variant, expanded, onChange }) => {
-  const isMobile = useMediaQuery("(max-width:500px)");
+  const isMobile = useMediaQuery("(max-width:490px)");
 
   if (isMobile) {
     return (
